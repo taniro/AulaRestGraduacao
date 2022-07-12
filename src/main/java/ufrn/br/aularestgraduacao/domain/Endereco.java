@@ -3,6 +3,7 @@ package ufrn.br.aularestgraduacao.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
 
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Endereco {
+public class Endereco extends RepresentationModel<Endereco> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
