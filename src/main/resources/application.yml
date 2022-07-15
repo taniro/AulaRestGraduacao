@@ -15,6 +15,3 @@ server:
   port: 8080
   servlet:
     context-path: /
-jwt:
-  private.key: classpath:app.key
-  public.key: classpath:app.pub

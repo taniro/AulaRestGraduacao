@@ -38,12 +38,9 @@ public class ClienteController {
     public ResponseEntity<ClienteResponseDTO> findById(@PathVariable Long id){
         Optional<Cliente> c  = service.findById(id);
         if (c.isPresent()){
-
             Cliente cliente = c.get();
-
             ClienteResponseDTO clienteResponseDto = modelMapper.map(cliente, ClienteResponseDTO.class);
             clienteResponseDto.addHateoasLinks(cliente.getId());
-
             /*
             cliente.add(linkTo(ClienteController.class).slash(cliente.getId()).withSelfRel());
             cliente.add(linkTo(ClienteController.class).withRel("GET"));
@@ -56,8 +53,6 @@ public class ClienteController {
             cliente.getEndereco().add(linkTo(EnderecoController.class).slash(cliente.getEndereco().getId()).withRel("delete"));
 
              */
-
-
             return ResponseEntity.ok().body(clienteResponseDto);
         }else{
             return ResponseEntity.notFound().build();
