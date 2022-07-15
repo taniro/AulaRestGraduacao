@@ -1,16 +1,15 @@
-package ufrn.br.aularestgraduacao.domain;
+package ufrn.br.aularestgraduacao.dto.cliente;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.hateoas.RepresentationModel;
 import ufrn.br.aularestgraduacao.controller.ClienteController;
-import ufrn.br.aularestgraduacao.controller.EnderecoController;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 @Data
 @NoArgsConstructor
-public class ClienteResponseDto extends RepresentationModel<ClienteResponseDto> {
+public class ClienteResponseDTO extends RepresentationModel<ClienteResponseDTO> {
     //Long id;
     String nome;
     //Boolean admin;

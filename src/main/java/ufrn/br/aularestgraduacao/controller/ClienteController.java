@@ -2,13 +2,11 @@ package ufrn.br.aularestgraduacao.controller;
 
 
 import org.modelmapper.ModelMapper;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ufrn.br.aularestgraduacao.domain.Cliente;
-import ufrn.br.aularestgraduacao.domain.ClienteRequestDto;
-import ufrn.br.aularestgraduacao.domain.ClienteResponseDto;
-import ufrn.br.aularestgraduacao.domain.Endereco;
+import ufrn.br.aularestgraduacao.dto.cliente.ClienteRequestDTO;
+import ufrn.br.aularestgraduacao.dto.cliente.ClienteResponseDTO;
 import ufrn.br.aularestgraduacao.service.ClienteService;
 
 import java.net.URI;
@@ -37,13 +35,13 @@ public class ClienteController {
     }
 
     @GetMapping(path = {"/{id}"})
-    public ResponseEntity<ClienteResponseDto> findById(@PathVariable Long id){
+    public ResponseEntity<ClienteResponseDTO> findById(@PathVariable Long id){
         Optional<Cliente> c  = service.findById(id);
         if (c.isPresent()){
 
             Cliente cliente = c.get();
 
-            ClienteResponseDto clienteResponseDto = modelMapper.map(cliente, ClienteResponseDto.class);
+            ClienteResponseDTO clienteResponseDto = modelMapper.map(cliente, ClienteResponseDTO.class);
             clienteResponseDto.addHateoasLinks(cliente.getId());
 
             /*
@@ -67,7 +65,7 @@ public class ClienteController {
     }
 
     @PostMapping
-    public ResponseEntity<Cliente> insert(@RequestBody ClienteRequestDto c) throws URISyntaxException {
+    public ResponseEntity<Cliente> insert(@RequestBody ClienteRequestDTO c) throws URISyntaxException {
 
 
         Cliente novo = modelMapper.map(c, Cliente.class);
